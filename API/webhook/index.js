@@ -1,9 +1,19 @@
 let postal = require('postal');
+let token = 'EAACEdEose0cBAPPXjXynBofruE7ZBNWZAt4PWdCyv4JTg9USewn0J232iQi6gqBfL2iZC3jmkCQymnJl4tQtZBDJfKRSaizfcfIRaBQ7OE4J5ftREkbE5ZCgvLfBIG38bbN5QbBLlxaJCOfEpS6FyIPi2QNsk9BuxMb4xwwSYjLzC4ofZAQJkoZASiX4FjrRZAYZD';
 
 module.exports = function(app) {
     let router = require('express').Router();
 
-    router.post('/webhook', (req, res, next) => {
+
+    router.get('/', (req, res, next) => {
+        if (req.query['hub.verify_token'] === token) {
+            res.send(req.query['hub.challenge'])
+        }
+        res.send('Error, wrong token');
+    });
+
+
+    router.post('/', (req, res, next) => {
         let message = req.body;
         console.log(message)
 
@@ -37,5 +47,5 @@ module.exports = function(app) {
         }
     });
 
-    app.use('/', router);
+    app.use('/webhook', router);
 };

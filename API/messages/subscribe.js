@@ -6,6 +6,7 @@ let subscribe = postal.subscribe({
     channel: "webhook",
     topic: "message.new",
     callback: function(data, envelope) {
+        // save db
         messageAPI.save(data, function(err) {
             console.log(err)
         });

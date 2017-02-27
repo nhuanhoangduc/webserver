@@ -1,16 +1,13 @@
 let request = require('request');
 let fbConfigs = require('../../configs/facebook');
-let token = fbConfigs.token;
+let page_access_token = fbConfigs.page_access_token;
 
 
+// https://developers.facebook.com/docs/messenger-platform/send-api-reference
 let send = (receiveId, message, done) => {
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {
-            access_token: token,
-        },
-        method: 'POST',
-        json: {
+    request.post({
+        url: 'https://graph.facebook.com/v2.6/me/messages?access_token=' + page_access_token,
+        form: {
             recipient: {
                 id: receiveId
             },
@@ -18,8 +15,8 @@ let send = (receiveId, message, done) => {
                 text: message
             },
         }
-    }, (err, res, body) => {
-    	done(err, res);
+    }, (err, res) => {
+        done(err, res);
     });
 };
 

@@ -1,4 +1,4 @@
-let messageAPI = require('./api');
+let commentAPI = require('./api');
 
 
 module.exports = function(app) {
@@ -6,11 +6,11 @@ module.exports = function(app) {
 
 	// Send message
     router.post('/', (req, res, next) => {
-    	messageAPI.send(req.body.receiveId, req.body.message, (err, r) => {
+    	commentAPI.send(req.body.objectId, req.body.message, (err, r) => {
     		res.send(r)
     	});
     });
 
 
-    app.use('/message', router);
+    app.use('/comment', router);
 };

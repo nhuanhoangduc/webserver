@@ -17,7 +17,6 @@ module.exports = function(app) {
 
     router.post('/', (req, res, next) => {
         let message = req.body;
-        console.log(message)
 
         if (message && message.entry) {
 
@@ -35,7 +34,7 @@ module.exports = function(app) {
                             postal.publish({
                                 channel: "webhook",
                                 topic: "comment.new",
-                                data: item
+                                data: change
                             });
                         }
                     });

@@ -1,5 +1,7 @@
 let postal = require('postal');
-let token = 'EAACEdEose0cBAPPXjXynBofruE7ZBNWZAt4PWdCyv4JTg9USewn0J232iQi6gqBfL2iZC3jmkCQymnJl4tQtZBDJfKRSaizfcfIRaBQ7OE4J5ftREkbE5ZCgvLfBIG38bbN5QbBLlxaJCOfEpS6FyIPi2QNsk9BuxMb4xwwSYjLzC4ofZAQJkoZASiX4FjrRZAYZD';
+let fbConfigs = require('../../configs/facebook');
+let token = fbConfigs.token;
+
 
 module.exports = function(app) {
     let router = require('express').Router();

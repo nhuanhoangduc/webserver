@@ -7,9 +7,9 @@ let subscribe = postal.subscribe({
     topic: "message.new",
     callback: function(data, envelope) {
         // save db
-        messageAPI.save(data, function(err) {
-            console.log(err)
-        });
+        // messageAPI.save(data, function(err) {
+        //     console.log(err)
+        // });
 
         // send to client
         postal.publish({

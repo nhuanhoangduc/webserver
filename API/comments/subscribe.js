@@ -8,7 +8,7 @@ let subscribe = postal.subscribe({
     callback: function(data, envelope) {
 
         // Save db
-        Comments.save(data, function() {});
+        // Comments.save(data, function() {});
 
         // send to client
         postal.publish({
